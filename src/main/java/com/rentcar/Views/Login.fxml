@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rentcar.Controllers.Login">
+   <children>
+      <HBox>
+         <children>
+            <Label text="Adresse email: " />
+            <TextField fx:id="email" />
+         </children>
+         <VBox.margin>
+            <Insets bottom="10.0" />
+         </VBox.margin></HBox>
+      <HBox layoutX="10.0" layoutY="10.0">
+         <children>
+            <Label text="Mot de passe: " />
+            <PasswordField fx:id="password" />
+         </children>
+         <VBox.margin>
+            <Insets bottom="10.0" />
+         </VBox.margin>
+      </HBox>
+      <Pane>
+         <children>
+            <Button mnemonicParsing="false" prefWidth="240.0" text="Se connecter" onAction="#login"/>
+         </children>
+      </Pane>
+   </children>
+   <padding>
+      <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+   </padding>
+</VBox>

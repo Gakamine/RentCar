@@ -12,16 +12,19 @@
     <class>com.rentcar.Models.CategorieVehicule</class>
     <class>com.rentcar.Models.Client</class>
     <class>com.rentcar.Models.Devis</class>
-    <class>com.rentcar.Models.Employes</class>
     <class>com.rentcar.Models.ProgrammeFidelite</class>
     <class>com.rentcar.Models.Vehicule</class>
-    <properties>
+    <class>com.rentcar.Models.Employe</class>
+      <class>com.rentcar.Models.Facture</class>
+      <properties>
       <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/postgres"/>
       <property name="hibernate.connection.username" value="postgres"/>
       <property name="hibernate.connection.password" value="postgres"/>
       <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
       <property name="hibernate.dialect" value="org.hibernate.dialect.PostgresPlusDialect"/>
       <property name="hibernate.default_schema" value="public"/>
+      <property name="hibernate.id.new_generator_mappings" value="false"></property>
+      <property name="hibernate.hbm2ddl.auto" value="update"/>
     </properties>
   </persistence-unit>
 </persistence>

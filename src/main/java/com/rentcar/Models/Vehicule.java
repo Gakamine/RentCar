@@ -1,9 +1,6 @@
 package com.rentcar.Models;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Objects;
 
@@ -15,8 +12,11 @@ public class Vehicule {
     private BigDecimal km;
     private Boolean typeAuto;
     private Boolean climatisation;
+    private CategorieVehicule categorieVehiculeByIdCatvehicule;
+    private CategorieCarburant categorieCarburantByIdCarburant;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "immatriculation", nullable = false)
     public int getImmatriculation() {
         return immatriculation;
@@ -87,5 +87,25 @@ public class Vehicule {
     @Override
     public int hashCode() {
         return Objects.hash(immatriculation, marque, modele, km, typeAuto, climatisation);
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_catvehicule", referencedColumnName = "id_catvehicule", nullable = false)
+    public CategorieVehicule getCategorieVehiculeByIdCatvehicule() {
+        return categorieVehiculeByIdCatvehicule;
+    }
+
+    public void setCategorieVehiculeByIdCatvehicule(CategorieVehicule categorieVehiculeByIdCatvehicule) {
+        this.categorieVehiculeByIdCatvehicule = categorieVehiculeByIdCatvehicule;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_carburant", referencedColumnName = "id_carburant", nullable = false)
+    public CategorieCarburant getCategorieCarburantByIdCarburant() {
+        return categorieCarburantByIdCarburant;
+    }
+
+    public void setCategorieCarburantByIdCarburant(CategorieCarburant categorieCarburantByIdCarburant) {
+        this.categorieCarburantByIdCarburant = categorieCarburantByIdCarburant;
     }
 }

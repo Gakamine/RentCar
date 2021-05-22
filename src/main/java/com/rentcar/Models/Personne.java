@@ -1,9 +1,6 @@
 package com.rentcar.Models;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
@@ -13,10 +10,21 @@ public class Personne {
     private String prenom;
     private String mail;
     private String numtelephone;
-    private String login;
-    private String mdp;
+    private Adresse adresseByIdAdresse;
+
+    public Personne() {
+    }
+
+    public Personne(String nom, String prenom, String mail, String numtelephone, Adresse adresseByIdAdresse) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.mail = mail;
+        this.numtelephone = numtelephone;
+        this.adresseByIdAdresse = adresseByIdAdresse;
+    }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_personne", nullable = false)
     public int getIdPersonne() {
         return idPersonne;
@@ -47,7 +55,7 @@ public class Personne {
     }
 
     @Basic
-    @Column(name = "mail", nullable = true, length = 50)
+    @Column(name = "mail", nullable = true)
     public String getMail() {
         return mail;
     }
@@ -66,36 +74,26 @@ public class Personne {
         this.numtelephone = numtelephone;
     }
 
-    @Basic
-    @Column(name = "login", nullable = true, length = 50)
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    @Basic
-    @Column(name = "mdp", nullable = true, length = 50)
-    public String getMdp() {
-        return mdp;
-    }
-
-    public void setMdp(String mdp) {
-        this.mdp = mdp;
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Personne personne = (Personne) o;
-        return idPersonne == personne.idPersonne && Objects.equals(nom, personne.nom) && Objects.equals(prenom, personne.prenom) && Objects.equals(mail, personne.mail) && Objects.equals(numtelephone, personne.numtelephone) && Objects.equals(login, personne.login) && Objects.equals(mdp, personne.mdp);
+        return idPersonne == personne.idPersonne && Objects.equals(nom, personne.nom) && Objects.equals(prenom, personne.prenom) && Objects.equals(mail, personne.mail) && Objects.equals(numtelephone, personne.numtelephone);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idPersonne, nom, prenom, mail, numtelephone, login, mdp);
+        return Objects.hash(idPersonne, nom, prenom, mail, numtelephone);
     }
+
+    @ManyToOne
+    @JoinColumn(name = "id_adresse", referencedColumnName = "id_adresse")
+    public Adresse getAdresseByIdAdresse() {
+        return adresseByIdAdresse;
+    }
+
+    public void setAdresseByIdAdresse(Adresse adresseByIdAdresse) {
+        this.adresseByIdAdresse = adresseByIdAdresse;
+    }
+
 }

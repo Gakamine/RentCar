@@ -1,6 +1,7 @@
 package com.rentcar.Models;
 
 import javax.persistence.*;
+import java.util.Currency;
 import java.util.Objects;
 
 @Entity
@@ -8,9 +9,10 @@ import java.util.Objects;
 public class CategorieVehicule {
     private int idCatvehicule;
     private String type;
-    private Object tarif;
+    private Currency tarif;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_catvehicule", nullable = false)
     public int getIdCatvehicule() {
         return idCatvehicule;
@@ -32,11 +34,11 @@ public class CategorieVehicule {
 
     @Basic
     @Column(name = "tarif", nullable = true)
-    public Object getTarif() {
+    public Currency getTarif() {
         return tarif;
     }
 
-    public void setTarif(Object tarif) {
+    public void setTarif(Currency tarif) {
         this.tarif = tarif;
     }
 

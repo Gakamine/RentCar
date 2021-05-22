@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1000.0" style="-fx-background-color: #0c2136;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutX="340.0" layoutY="99.0" prefHeight="239.0" prefWidth="321.0">
+         <children>
+            <PasswordField layoutX="172.0" layoutY="65.0" promptText="Mot de passe" style="-fx-background-color: #e6e4e4#e#e6e4e4;" />
+            <TextField layoutX="172.0" layoutY="200.0" promptText="Code Postal" style="-fx-background-color: #e6e4e4#e#e6e4e4;" />
+            <TextField layoutY="155.0" promptText="Adresse mail" style="-fx-background-color: #e6e4e4#e#e6e4e4;" />
+            <TextField layoutY="110.0" promptText="Nom de Famille" style="-fx-background-color: #e6e4e4#e#e6e4e4;" />
+            <TextField layoutX="172.0" layoutY="110.0" promptText="Prénom" style="-fx-background-color: #e6e4e4#e#e6e4e4;" />
+            <TextField layoutX="172.0" layoutY="155.0" promptText="Numéro téléphone" style="-fx-background-color: #e6e4e4#e#e6e4e4;" />
+            <TextField layoutY="200.0" promptText="Adresse" style="-fx-background-color: #e6e4e4#e#e6e4e4;" />
+            <TextField layoutY="65.0" promptText="Nom d'utilisateur" style="-fx-background-color: #e6e4e4#e#e6e4e4;" />
+         </children>
+      </AnchorPane>
+      <Button layoutX="432.0" layoutY="354.0" mnemonicParsing="false" style="-fx-background-color: #b3ca24;" text="Créer un compte" textAlignment="CENTER">
+         <font>
+            <Font name="Arial Black" size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</Pane>

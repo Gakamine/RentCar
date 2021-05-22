@@ -1,9 +1,6 @@
 package com.rentcar.Models;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Objects;
 
@@ -14,8 +11,12 @@ public class Agence {
     private String numtelephone;
     private BigDecimal gpsLat;
     private BigDecimal gpsLong;
+    private Adresse adresseByIdAdresse;
+    private Integer idAdresse;
+    private Integer nbmaxvehicule;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_agence", nullable = false)
     public int getIdAgence() {
         return idAgence;
@@ -76,5 +77,25 @@ public class Agence {
     @Override
     public int hashCode() {
         return Objects.hash(idAgence, nom, numtelephone, gpsLat, gpsLong);
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_adresse", referencedColumnName = "id_adresse")
+    public Adresse getAdresseByIdAdresse() {
+        return adresseByIdAdresse;
+    }
+
+    public void setAdresseByIdAdresse(Adresse adresseByIdAdresse) {
+        this.adresseByIdAdresse = adresseByIdAdresse;
+    }
+
+    @Basic
+    @Column(name = "nbmaxvehicule", nullable = true)
+    public Integer getNbmaxvehicule() {
+        return nbmaxvehicule;
+    }
+
+    public void setNbmaxvehicule(Integer nbmaxvehicule) {
+        this.nbmaxvehicule = nbmaxvehicule;
     }
 }

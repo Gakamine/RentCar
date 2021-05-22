@@ -10,6 +10,7 @@ public class CategorieCarburant {
     private String type;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_carburant", nullable = false)
     public int getIdCarburant() {
         return idCarburant;

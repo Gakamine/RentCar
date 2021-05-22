@@ -2,7 +2,7 @@ package com.rentcar.Models;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.util.Currency;
 import java.util.Objects;
 
 @Entity
@@ -11,9 +11,9 @@ public class ProgrammeFidelite {
     private int idProgramme;
     private Integer duree;
     private String description;
-    private Object prix;
+    private Currency prix;
     private BigDecimal tauxReduction;
-    private Date dateSouscription;
+    private String typedeprogramme;
 
     @Id
     @Column(name = "id_programme", nullable = false)
@@ -47,11 +47,11 @@ public class ProgrammeFidelite {
 
     @Basic
     @Column(name = "prix", nullable = true)
-    public Object getPrix() {
+    public Currency getPrix() {
         return prix;
     }
 
-    public void setPrix(Object prix) {
+    public void setPrix(Currency prix) {
         this.prix = prix;
     }
 
@@ -66,13 +66,13 @@ public class ProgrammeFidelite {
     }
 
     @Basic
-    @Column(name = "date_souscription", nullable = true)
-    public Date getDateSouscription() {
-        return dateSouscription;
+    @Column(name = "typedeprogramme", nullable = true, length = 50)
+    public String getTypedeprogramme() {
+        return typedeprogramme;
     }
 
-    public void setDateSouscription(Date dateSouscription) {
-        this.dateSouscription = dateSouscription;
+    public void setTypedeprogramme(String typedeprogramme) {
+        this.typedeprogramme = typedeprogramme;
     }
 
     @Override
@@ -80,11 +80,11 @@ public class ProgrammeFidelite {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ProgrammeFidelite that = (ProgrammeFidelite) o;
-        return idProgramme == that.idProgramme && Objects.equals(duree, that.duree) && Objects.equals(description, that.description) && Objects.equals(prix, that.prix) && Objects.equals(tauxReduction, that.tauxReduction) && Objects.equals(dateSouscription, that.dateSouscription);
+        return idProgramme == that.idProgramme && Objects.equals(duree, that.duree) && Objects.equals(description, that.description) && Objects.equals(prix, that.prix) && Objects.equals(tauxReduction, that.tauxReduction) && Objects.equals(typedeprogramme, that.typedeprogramme);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idProgramme, duree, description, prix, tauxReduction, dateSouscription);
+        return Objects.hash(idProgramme, duree, description, prix, tauxReduction, typedeprogramme);
     }
 }

@@ -10,9 +10,15 @@ public class Client {
     private int idClient;
     private LocalDate dateSouscription;
     private Personne idPersonne;
+    private ProgrammeFidelite idProgramme;
 
-    public Client(LocalDate dateSouscription, Personne idPersonne) {
+    public Client(LocalDate dateSouscription, ProgrammeFidelite idProgramme, Personne idPersonne) {
         this.dateSouscription = dateSouscription;
+        this.idProgramme = idProgramme;
+        this.idPersonne = idPersonne;
+    }
+
+    public Client(Personne idPersonne) {
         this.idPersonne = idPersonne;
     }
 
@@ -48,6 +54,16 @@ public class Client {
 
     public void setPersonneByIdPersonne(Personne personneByIdPersonne) {
         this.idPersonne = personneByIdPersonne;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_programme", referencedColumnName = "id_programme")
+    public ProgrammeFidelite getIdProgramme() {
+        return idProgramme;
+    }
+
+    public void setIdProgramme(ProgrammeFidelite idProgramme) {
+        this.idProgramme = idProgramme;
     }
 
     @Override

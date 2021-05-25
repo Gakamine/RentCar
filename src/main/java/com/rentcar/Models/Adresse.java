@@ -30,7 +30,7 @@ public class Adresse {
     }
 
     @Basic
-    @Column(name = "rue", nullable = true, length = 50)
+    @Column(name = "rue", nullable = false)
     public String getRue() {
         return rue;
     }
@@ -40,7 +40,7 @@ public class Adresse {
     }
 
     @Basic
-    @Column(name = "code_postal", nullable = true, length = 50)
+    @Column(name = "code_postal", nullable = false)
     public String getCodePostal() {
         return codePostal;
     }

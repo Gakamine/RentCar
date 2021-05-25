@@ -11,7 +11,7 @@ public class ProgrammeFidelite {
     private int idProgramme;
     private Integer duree;
     private String description;
-    private Currency prix;
+    private BigDecimal prix;
     private BigDecimal tauxReduction;
     private String typedeprogramme;
 
@@ -47,11 +47,11 @@ public class ProgrammeFidelite {
 
     @Basic
     @Column(name = "prix", nullable = true)
-    public Currency getPrix() {
+    public BigDecimal getPrix() {
         return prix;
     }
 
-    public void setPrix(Currency prix) {
+    public void setPrix(BigDecimal prix) {
         this.prix = prix;
     }
 

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rentcar.Controllers.Circuit">
+    <TableView fx:id="table" editable="true" layoutX="15.0" layoutY="17.0" prefHeight="729.0" prefWidth="971.0" />
+</AnchorPane>

@@ -24,11 +24,4 @@ public class UserSession {
         return this.utilisateur.getAdmin();
     }
 
-    public Boolean isEmploye() {
-        if(this.utilisateur.getChauffeur() || this.utilisateur.getHoteAccueil()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 }

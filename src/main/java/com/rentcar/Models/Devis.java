@@ -4,8 +4,8 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.math.BigDecimal;
 import java.sql.Date;
-import java.util.Currency;
 import java.util.Objects;
 
 @Entity
@@ -17,7 +17,7 @@ public class Devis {
     private Integer immatriculation;
     private Integer agencedepart;
     private Integer agencearrivee;
-    private Currency prix;
+    private BigDecimal prix;
 
     @Id
     @Column(name = "num_devis", nullable = false)
@@ -91,11 +91,11 @@ public class Devis {
 
     @Basic
     @Column(name = "prix", nullable = true)
-    public Currency getPrix() {
+    public BigDecimal getPrix() {
         return prix;
     }
 
-    public void setPrix(Currency prix) {
+    public void setPrix(BigDecimal prix) {
         this.prix = prix;
     }
 

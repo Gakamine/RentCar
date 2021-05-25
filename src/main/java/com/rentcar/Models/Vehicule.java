@@ -15,6 +15,20 @@ public class Vehicule {
     private CategorieVehicule categorieVehiculeByIdCatvehicule;
     private CategorieCarburant categorieCarburantByIdCarburant;
 
+    public Vehicule(int immatriculation, String marque, String modele, BigDecimal km, Boolean typeAuto, Boolean climatisation, CategorieVehicule categorieVehiculeByIdCatvehicule, CategorieCarburant categorieCarburantByIdCarburant) {
+        this.immatriculation = immatriculation;
+        this.marque = marque;
+        this.modele = modele;
+        this.km = km;
+        this.typeAuto = typeAuto;
+        this.climatisation = climatisation;
+        this.categorieVehiculeByIdCatvehicule = categorieVehiculeByIdCatvehicule;
+        this.categorieCarburantByIdCarburant = categorieCarburantByIdCarburant;
+    }
+
+    public Vehicule() {
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "immatriculation", nullable = false)

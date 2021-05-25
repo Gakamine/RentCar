@@ -35,7 +35,7 @@ public class Personne {
     }
 
     @Basic
-    @Column(name = "nom", nullable = true, length = 50)
+    @Column(name = "nom", nullable = false)
     public String getNom() {
         return nom;
     }
@@ -45,7 +45,7 @@ public class Personne {
     }
 
     @Basic
-    @Column(name = "prenom", nullable = true, length = 50)
+    @Column(name = "prenom", nullable = false)
     public String getPrenom() {
         return prenom;
     }
@@ -55,7 +55,7 @@ public class Personne {
     }
 
     @Basic
-    @Column(name = "mail", nullable = true)
+    @Column(name = "mail", nullable = false, unique = true)
     public String getMail() {
         return mail;
     }
@@ -65,7 +65,7 @@ public class Personne {
     }
 
     @Basic
-    @Column(name = "numtelephone", nullable = true, length = 50)
+    @Column(name = "numtelephone", nullable = false)
     public String getNumtelephone() {
         return numtelephone;
     }

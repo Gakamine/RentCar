@@ -1,6 +1,7 @@
 package com.rentcar.Models;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.Currency;
 import java.util.Objects;
 
@@ -9,7 +10,7 @@ import java.util.Objects;
 public class CategorieVehicule {
     private int idCatvehicule;
     private String type;
-    private Currency tarif;
+    private BigDecimal tarif;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,11 +35,11 @@ public class CategorieVehicule {
 
     @Basic
     @Column(name = "tarif", nullable = true)
-    public Currency getTarif() {
+    public BigDecimal getTarif() {
         return tarif;
     }
 
-    public void setTarif(Currency tarif) {
+    public void setTarif(BigDecimal tarif) {
         this.tarif = tarif;
     }
 

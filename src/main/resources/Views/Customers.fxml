@@ -55,7 +55,6 @@
                     <String fx:value="Recherche par nom" />
                     <String fx:value="A déjà loué une fois" />
                     <String fx:value="Location en cours" />
-                    <String fx:value="Véhicule loué" />
                 </FXCollections>
             </items>
         </ComboBox>

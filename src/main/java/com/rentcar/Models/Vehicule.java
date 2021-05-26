@@ -29,6 +29,9 @@ public class Vehicule {
     public Vehicule() {
     }
 
+    public Vehicule(Integer imt, String text, String text1, BigDecimal kilometre, boolean b, boolean b1, Object value) {
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "immatriculation", nullable = false)

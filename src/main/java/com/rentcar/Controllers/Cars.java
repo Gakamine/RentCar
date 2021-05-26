@@ -2,7 +2,6 @@ package com.rentcar.Controllers;
 
 import com.rentcar.Models.*;
 import com.rentcar.Wrapper.TableViewCars;
-import com.rentcar.Wrapper.TableViewCustomers;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -11,13 +10,13 @@ import javafx.scene.layout.Pane;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.ParseException;
 import java.util.List;
 
 public class Cars {
-
-    class Wrapper {
-        private Personne personne;
-    }
 
     UserSession session = UserSession.getSession();
 
@@ -79,24 +78,42 @@ public class Cars {
         entityManager.close();
     }
 
-    public void add_entry() {
-        System.out.println(auto.selectedProperty().get());
+    public void add_entry() throws ParseException {
+
+        Vehicule car;
+
+        DecimalFormatSymbols symbols = new DecimalFormatSymbols();
+        symbols.setGroupingSeparator(',');
+        symbols.setDecimalSeparator('.');
+        String pattern = "#,##0.0#";
+        DecimalFormat decimalFormat = new DecimalFormat(pattern, symbols);
+        decimalFormat.setParseBigDecimal(true);
+
         EntityManager entityManager = initEntityManager();
         Integer imt = Integer.parseInt(immatriculation.getText());
-        Integer kilometre = Integer.parseInt(km.getText());
-//        CategorieVehicule cat = (CategorieVehicule) entityManager.createQuery("FROM CategorieVehicule WHERE idCatvehicule = :id").setParameter("id");
-//        Vehicule voiture = new Vehicule(imt, brand.getText(), model.getText(),kilometre,auto.selectedProperty().get(),climatisation.selectedProperty().get(),fuel.getValue());
-//
-//        try {
-//            entityManager.getTransaction().begin();
-//            entityManager.persist(voiture);
-//            entityManager.getTransaction().commit();
-//
-//            TableViewCars tableview = new TableViewCars(voiture);
-//            table.getItems().add(tableview);
-//        } catch (Exception error) {
-//            erreur.setText(error.getMessage());
-//        }
+
+        BigDecimal kilometre = null;
+        try {
+            kilometre = (BigDecimal) decimalFormat.parse(km.getText());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        CategorieVehicule cat = (CategorieVehicule) entityManager.createQuery("FROM CategorieVehicule WHERE idCatvehicule = :id").setParameter("id", category.getSelectionModel().getSelectedIndex()).getSingleResult();
+        CategorieCarburant cat_fuel = (CategorieCarburant) entityManager.createQuery("FROM CategorieCarburant WHERE idCarburant = :id").setParameter("id", fuel.getSelectionModel().getSelectedIndex()).getSingleResult();
+
+        car = new Vehicule(imt, brand.getText(), model.getText(), kilometre, auto.selectedProperty().get(), climatisation.selectedProperty().get(), cat, cat_fuel);
+
+        try {
+            entityManager.getTransaction().begin();
+            entityManager.persist(car);
+            entityManager.getTransaction().commit();
+
+            TableViewCars tableview = new TableViewCars(car);
+            table.getItems().add(tableview);
+        } catch (Exception error) {
+            System.out.println(error);
+            erreur.setText(error.getMessage());
+        }
 
         entityManager.close();
     }
@@ -114,44 +131,51 @@ public class Cars {
     }
 
     public void edit_entry() {
-//        EntityManager entityManager = initEntityManager();
-//        entityManager.getTransaction().begin();
-//        TableViewCustomers tableview = table.getSelectionModel().getSelectedItem();
-//        Personne personne = entityManager.find(Personne.class, tableview.getPersonne().getIdPersonne());
-//        Adresse adresse = entityManager.find(Adresse.class, tableview.getAdresse().getIdAdresse());
-//        Client client = entityManager.find(Client.class, tableview.getClient().getIdClient());
-//        personne.setNom(familyname.getText());
-//        personne.setPrenom(name.getText());
-//        personne.setMail(mail.getText());
-//        personne.setNumtelephone(phone.getText());
-//        adresse.setCodePostal(postalcode.getText());
-//        adresse.setRue(address.getText());
-//        if(program.getSelectionModel().getSelectedIndex()!=0 && date.getValue()!=null) {
-//            ProgrammeFidelite pgr = (ProgrammeFidelite) entityManager.createQuery("FROM ProgrammeFidelite WHERE idProgramme = :id")
-//                    .setParameter("id", program.getSelectionModel().getSelectedIndex()).getSingleResult();
-//            client.setDateSouscription(date.getValue());
-//            client.setIdProgramme(pgr);
-//        } else{
-//            client.setDateSouscription(null);
-//            client.setIdProgramme(null);
-//        }
-//        entityManager.getTransaction().commit();
-//        entityManager.close();
-//        table.getItems().remove(tableview);
-//        TableViewCustomers tableView = new TableViewCustomers(client);
-//        table.getItems().add(tableView);
+
+        DecimalFormatSymbols symbols = new DecimalFormatSymbols();
+        symbols.setGroupingSeparator(',');
+        symbols.setDecimalSeparator('.');
+        String pattern = "#,##0.0#";
+        DecimalFormat decimalFormat = new DecimalFormat(pattern, symbols);
+        decimalFormat.setParseBigDecimal(true);
+
+        EntityManager entityManager = initEntityManager();
+        entityManager.getTransaction().begin();
+        TableViewCars tableview = table.getSelectionModel().getSelectedItem();
+        Vehicule vehicule = entityManager.find(Vehicule.class, tableview.getCar());
+        vehicule.setMarque(brand.getText());
+        vehicule.setModele(model.getText());
+
+        Integer imt = Integer.parseInt(immatriculation.getText());
+        vehicule.setImmatriculation(imt);
+        vehicule.setClimatisation(climatisation.selectedProperty().get());
+        vehicule.setTypeAuto(auto.selectedProperty().get());
+        CategorieVehicule cat = (CategorieVehicule) entityManager.createQuery("FROM CategorieVehicule WHERE idCatvehicule = :id").setParameter("id", category.getSelectionModel().getSelectedIndex()).getSingleResult();
+        CategorieCarburant cat_fuel = (CategorieCarburant) entityManager.createQuery("FROM CategorieCarburant WHERE idCarburant = :id").setParameter("id", fuel.getSelectionModel().getSelectedIndex()).getSingleResult();
+        vehicule.setCategorieVehiculeByIdCatvehicule(cat);
+        vehicule.setCategorieCarburantByIdCarburant(cat_fuel);
+        BigDecimal kilometre = null;
+        try {
+            kilometre = (BigDecimal) decimalFormat.parse(km.getText());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        vehicule.setKm(kilometre);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+        table.getItems().remove(tableview);
+        TableViewCars tableView = new TableViewCars(vehicule);
+        table.getItems().add(tableView);
     }
 
     public void set_entry() {
-//        TableViewCustomers tableview = table.getSelectionModel().getSelectedItem();
-//        if(tableview!=null) {
-//            familyname.setText(tableview.getNom());
-//            name.setText(tableview.getPrenom());
-//            mail.setText(tableview.getMail());
-//            phone.setText(tableview.getNumtelephone());
-//            postalcode.setText(tableview.getCodepostal());
-//            address.setText(tableview.getRue());
-//        }
+        TableViewCars tableview = table.getSelectionModel().getSelectedItem();
+        if(tableview!=null) {
+            brand.setText(tableview.getMarque());
+            model.setText(tableview.getModele());
+            immatriculation.setText(String.valueOf(tableview.getImmatriculation()));
+            km.setText(String.valueOf(tableview.getKm()));
+        }
     }
 
     public EntityManager initEntityManager() {

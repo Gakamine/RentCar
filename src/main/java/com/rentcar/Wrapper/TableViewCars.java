@@ -17,7 +17,7 @@ public class TableViewCars {
         this.fuel = car.getCategorieCarburantByIdCarburant();
     }
 
-    public Integer getImmatriculation() {
+    public int getImmatriculation() {
         return car.getImmatriculation();
     }
 
@@ -48,4 +48,6 @@ public class TableViewCars {
     public String getCategorie() {
         return category.getType();
     }
+
+    public Vehicule getCar() { return car; }
 }

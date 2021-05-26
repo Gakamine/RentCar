@@ -14,10 +14,6 @@ import java.util.List;
 
 public class Customers {
 
-    class Wrapper {
-        private Personne personne;
-    }
-
     UserSession session = UserSession.getSession();
 
     @FXML private TextField search_input;

@@ -21,46 +21,46 @@ public class MainFrame {
 
     @FXML
     public void initialize() throws IOException {
-        subframe.getChildren().add(FXMLLoader.load(getClass().getResource("../Views/Home.fxml")));
+        subframe.getChildren().add(FXMLLoader.load(getClass().getClassLoader().getResource("Views/Home.fxml")));
     }
 
     @FXML
     public void Home() throws IOException {
         subframe.getChildren().clear();
-        subframe.getChildren().add(FXMLLoader.load(getClass().getResource("../Views/Home.fxml")));
+        subframe.getChildren().add(FXMLLoader.load(getClass().getClassLoader().getResource("Views/Home.fxml")));
     }
 
     @FXML
     public void goLoginpage() throws IOException {
         if(session.getUser() == null) {
             subframe.getChildren().clear();
-            subframe.getChildren().add(FXMLLoader.load(getClass().getResource("../Views/Login.fxml")));
+            subframe.getChildren().add(FXMLLoader.load(getClass().getClassLoader().getResource("Views/Login.fxml")));
         } else {
             bb.setVisible(false);
             circuit.setVisible(false);
             status.setText("Login");
             session.clearSession();
             subframe.getChildren().clear();
-            subframe.getChildren().add(FXMLLoader.load(getClass().getResource("../Views/Home.fxml")));
+            subframe.getChildren().add(FXMLLoader.load(getClass().getClassLoader().getResource("Views/Home.fxml")));
         }
     }
 
     @FXML
     public void goCarpage() throws IOException {
         subframe.getChildren().clear();
-        subframe.getChildren().add(FXMLLoader.load(getClass().getResource("../Views/Cars.fxml")));
+        subframe.getChildren().add(FXMLLoader.load(getClass().getClassLoader().getResource("Views/Cars.fxml")));
     }
 
     @FXML
     public void goCustomerpage() throws IOException {
         subframe.getChildren().clear();
-        subframe.getChildren().add(FXMLLoader.load(getClass().getResource("../Views/Customers.fxml")));
+        subframe.getChildren().add(FXMLLoader.load(getClass().getClassLoader().getResource("Views/Customers.fxml")));
     }
 
     @FXML
     public void goCircuitpage() throws IOException {
         subframe.getChildren().clear();
-        subframe.getChildren().add(FXMLLoader.load(getClass().getResource("../Views/Circuit.fxml")));
+        subframe.getChildren().add(FXMLLoader.load(getClass().getClassLoader().getResource("Views/Circuit.fxml")));
     }
 
 }

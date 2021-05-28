@@ -37,7 +37,7 @@ public class Login {
                 Pane subframe = (Pane) scene.lookup("#subframe");
                 status.setText("Logout");
                 subframe.getChildren().clear();
-                subframe.getChildren().add(FXMLLoader.load(getClass().getResource("../Views/Home.fxml")));
+                subframe.getChildren().add(FXMLLoader.load(getClass().getResource("Views/Home.fxml")));
                 ButtonBar menu = (ButtonBar) scene.lookup("#bb");
                 menu.setVisible(true);
                 if(session.getUser().getChauffeur() || session.getUser().getAdmin()) {

@@ -92,9 +92,7 @@
       <element id="jpa-descriptors" facet="RentCar/jpa/JPA" />
       <element id="file-copy" path="$PROJECT_DIR$/../../../../Program Files/Java/commons-codec-1.7.jar" />
       <element id="library" level="project" name="Hibernate 5.4.11-5.4.11" />
-      <element id="library" level="project" name="javafx" />
       <element id="file-copy" path="$PROJECT_DIR$/../../../../Program Files/Java/jhash-2.2.0.jar" />
-      <element id="library" level="project" name="postgresql-42.2.20" />
     </root>
   </artifact>
 </component>

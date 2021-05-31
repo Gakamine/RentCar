@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="child" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1000.0" style="-fx-background-color: #0c2136;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rentcar.Controllers.Login">
+   <children>
+      <ImageView fitHeight="126.0" fitWidth="134.0" layoutX="437.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@/images/logo_login.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="error" fill="RED" layoutX="391.0" layoutY="431.0" textAlignment="CENTER" wrappingWidth="217.1875">
+         <font>
+            <Font size="20.0" />
+         </font></Text>
+      <AnchorPane layoutX="400.0" layoutY="179.0" prefHeight="126.0" prefWidth="200.0">
+         <children>
+            <TextField fx:id="loginInput" layoutX="26.0" layoutY="26.0" promptText="Nom d'utilisateur" style="-fx-background-color: #e6e4e4#e6e4e4;" />
+            <PasswordField fx:id="passwordInput" layoutX="26.0" layoutY="76.0" promptText="Mot de Passe" style="-fx-background-color: #e6e4e4#e6e4e4;" />
+         </children>
+      </AnchorPane>
+      <Button layoutX="458.0" layoutY="305.0" mnemonicParsing="false" onMouseClicked="#Login" style="-fx-background-color: #b3ca24;" text="Se connecter" textAlignment="CENTER">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+   </children>
+</AnchorPane>

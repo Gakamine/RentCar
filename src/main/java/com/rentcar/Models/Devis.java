@@ -18,6 +18,7 @@ public class Devis {
     private Integer agencedepart;
     private Integer agencearrivee;
     private BigDecimal prix;
+    private boolean assurance;
 
     @Id
     @Column(name = "num_devis", nullable = false)
@@ -98,6 +99,11 @@ public class Devis {
     public void setPrix(BigDecimal prix) {
         this.prix = prix;
     }
+
+    @Basic
+    @Column(name = "assurance", nullable=true)
+    public boolean getAssurance(){return assurance;}
+    public void setAssurance(boolean assurance){this.assurance=assurance;}
 
     @Override
     public boolean equals(Object o) {
